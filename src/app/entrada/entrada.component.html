@@ -1,0 +1,26 @@
+  <mat-card class="mat-elevation-z5">
+        <h1>Análise de Vídeo</h1>
+
+    <form autocomplete="off" #form = "ngForm" (submit)="sendVideo($event)">
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayout.xs = "column">
+          <input name="arquivo" type="file" id="video" [(ngModel)]="arquivo" required>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs = "column">
+          <mat-checkbox class="checkbox-veiculo" name = "carro" [(ngModel)]="caro">Carro</mat-checkbox>
+          <mat-checkbox class="checkbox-veiculo" name = "moto" [(ngModel)]="moto">Moto</mat-checkbox>
+          <mat-checkbox class="checkbox-veiculo" name = "outro" [(ngModel)]="outro">Outro</mat-checkbox>
+          <mat-form-field>
+            <input name = "descricao" [disabled] = "!outro" [(ngModel)] = "outroDescricao"
+              matInput placeholder="Outro" [required]="outro" minlength="4">
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs = "column">
+          <button fxFlex = "15%" mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Enviar</button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
